@@ -1,6 +1,7 @@
 # Sample artwork is generated independently of the GEM runtime resources.
 set(SAMPLE_RESOURCE_DIR "${GEM_SAMPLES_DIR}/data")
 file(MAKE_DIRECTORY "${SAMPLE_RESOURCE_DIR}")
+find_program(GEM_IMAGE_CONVERTER NAMES magick convert REQUIRED)
 if(NOT TARGET resgen)
     find_program(GEM_RESGEN resgen HINTS "${GEM_SDK_ROOT}/bin" REQUIRED)
     add_executable(resgen IMPORTED GLOBAL)
@@ -46,7 +47,7 @@ foreach(clock_number_source IN LISTS clock_number_sources)
         OUTPUT ${clock_number_icon}
         COMMAND ${CMAKE_COMMAND} -E make_directory
             ${PROJECT_BINARY_DIR}/clock_number_icons
-        COMMAND convert ${clock_number_source}
+        COMMAND ${GEM_IMAGE_CONVERTER} ${clock_number_source}
             -background none
             -gravity center
             -extent 48x32
@@ -86,7 +87,7 @@ foreach(gemscape_toolbar_source IN LISTS gemscape_toolbar_sources)
         OUTPUT ${gemscape_toolbar_icon}
         COMMAND ${CMAKE_COMMAND} -E make_directory
             ${PROJECT_BINARY_DIR}/gemscape_toolbar_icons
-        COMMAND convert ${gemscape_toolbar_source}
+        COMMAND ${GEM_IMAGE_CONVERTER} ${gemscape_toolbar_source}
             -background white
             -alpha remove
             -alpha off
@@ -125,7 +126,7 @@ foreach(maestro_tree_source IN LISTS maestro_tree_sources)
         OUTPUT ${maestro_tree_icon}
         COMMAND ${CMAKE_COMMAND} -E make_directory
             ${PROJECT_BINARY_DIR}/maestro_tree_icons
-        COMMAND convert ${maestro_tree_source}
+        COMMAND ${GEM_IMAGE_CONVERTER} ${maestro_tree_source}
             -background white
             -alpha remove
             -alpha off
