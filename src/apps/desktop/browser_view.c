@@ -482,7 +482,7 @@ static int desktop_browser_wait_for_drag(WORD x, WORD y, WORD *mouse_x,
 
     for (;;) {
         event = evnt_multi(
-            (UWORD)(MU_BUTTON | MU_M1 | MU_TIMER), 1, 1, 0, 0,
+            (UWORD)(MU_BUTTON | MU_M1 | MU_TIMER), 1, 1, 0, 1,
             (WORD)(x - DESKTOP_DRAG_THRESHOLD),
             (WORD)(y - DESKTOP_DRAG_THRESHOLD),
             (WORD)(DESKTOP_DRAG_THRESHOLD * 2 + 1),

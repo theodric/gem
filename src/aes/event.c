@@ -237,7 +237,7 @@ WORD evnt_mouse(WORD flags, WORD x, WORD y, WORD w, WORD h, WORD *pmx,
     if (pks != NULL) {
         *pks = ks;
     }
-    return (flags != 0) ? inside : !inside;
+    return (flags == 0) ? inside : !inside;
 }
 
 WORD evnt_mesag(WORD msg[8])

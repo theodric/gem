@@ -78,10 +78,9 @@ void desktop_update_desk_menu_labels(void)
     tree[MENU_DESK_BOX].ob_tail = MENU_DESK_6;
     tree[MENU_DESK_BOX].ob_height = (WORD)(used_count ? used_count : 1);
 
-    /* Desk lists open file managers; File and Arrange act on them. None of
-     * the three belong on the bare desktop, so collapse every title to zero
-     * width until at least one file-manager window is open. */
-    desktop_set_title(tree, MENU_TITLE_DESK, " Desk ", used_count > 0);
+    /* Desk menu is always visible; File and Arrange act on open file managers,
+     * so collapse their titles to zero width when no window is open. */
+    desktop_set_title(tree, MENU_TITLE_DESK, " Desk ", 1);
     desktop_set_title(tree, MENU_TITLE_FILE, " File ", used_count > 0);
     desktop_set_title(tree, MENU_TITLE_ARRANGE, " Arrange ", used_count > 0);
 
